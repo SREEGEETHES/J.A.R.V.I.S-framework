@@ -1,0 +1,244 @@
+{
+  "$schema": "https://jarvis-framework.local/schema/config.v1.json",
+  "framework": "JARVIS-FRAMEWORK",
+  "version": "1.0.0",
+  "engine_entry_point": ".jarvis/system.md",
+  "boot_instructions": {
+    "read_on_every_context_load": [
+      ".jarvis/system.md",
+      ".jarvis/config.json"
+    ],
+    "silent": true
+  },
+  "commands": [
+    {
+      "id": "house-party-protocol",
+      "trigger_phrase": "/JARVIS, House Party Protocol",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": true,
+      "free_text_param_name": "user_supplied_context",
+      "description": "Deploys all 70 Vibe-Coded App Security checks simultaneously as armor suites: diagnostic discovery, threat audit, protocol remediation (auto-fix or human authorization), and secure reporting.",
+      "skill_manifest": ".jarvis/skills/house-party-protocol.md",
+      "state_file": ".jarvis/STATE.md",
+      "phases": [
+        "DIAGNOSTIC_DISCOVERY",
+        "THREAT_AUDIT",
+        "PROTOCOL_REMEDIATION",
+        "SECURE_REPORTING"
+      ],
+      "remediation_modalities": {
+        "A": {
+          "name": "Auto-Fix Armor",
+          "applies_to_states": [
+            "control_exists_but_misconfigured",
+            "control_entirely_absent_from_codebase"
+          ],
+          "note": "A check that FAILs because the control doesn't exist yet is remediated the same way as one that FAILs because it's broken: J.A.R.V.I.S. writes the missing code/middleware/logic from scratch, as long as no real external account, secret, or infra action is required to make it functional.",
+          "allowed_actions": [
+            "add_missing_http_response_headers",
+            "add_httponly_secure_samesite_cookie_flags",
+            "refactor_raw_sql_to_parameterized_queries",
+            "add_server_side_input_validation",
+            "escape_or_sanitize_untrusted_output",
+            "add_missing_authorization_checks_in_code",
+            "correct_or_introduce_cors_configuration_in_code",
+            "pin_dependency_versions_in_manifest",
+            "remove_secrets_from_tracked_source_files",
+            "introduce_rate_limiting_middleware",
+            "introduce_csrf_protection",
+            "introduce_input_schema_validation",
+            "build_missing_server_side_authorization_checks"
+          ],
+          "requires_developer_confirmation": false,
+          "touches_production": false
+        },
+        "B": {
+          "name": "Human Authorization Required",
+          "trigger_conditions": [
+            "requires_infrastructure_settings",
+            "requires_external_cloud_account_access",
+            "requires_manual_api_key_rotation",
+            "requires_mfa_setup",
+            "requires_secure_environment_keys",
+            "requires_dns_or_network_configuration",
+            "requires_billing_or_plan_changes",
+            "requires_third_party_dashboard_configuration"
+          ],
+          "halts_execution": true,
+          "output_template_ref": "authorization_request_template"
+        }
+      }
+    },
+    {
+      "id": "drop-my-needle",
+      "trigger_phrase": "/JARVIS, drop my needle",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": true,
+      "free_text_param_name": "user_supplied_context",
+      "description": "Runs the 46-check pre-launch website checklist covering performance, technical infrastructure, aesthetics, launch requirements, data privacy, accessibility, content trust, and legal review.",
+      "skill_manifest": ".jarvis/skills/drop-my-needle.md",
+      "state_file": ".jarvis/STATE.md",
+      "state_section": "Drop My Needle Ledger",
+      "phases": [
+        "DIAGNOSTIC_DISCOVERY",
+        "THREAT_AUDIT",
+        "PROTOCOL_REMEDIATION",
+        "SECURE_REPORTING"
+      ],
+      "remediation_modalities": {
+        "A": {
+          "name": "Auto-Fix Armor",
+          "applies_to_states": [
+            "control_exists_but_misconfigured",
+            "control_entirely_absent_from_codebase"
+          ],
+          "allowed_actions": [
+            "add_rate_limiting_middleware",
+            "add_error_handling_and_loading_states",
+            "add_server_side_file_upload_validation",
+            "add_pagination_to_unbounded_queries",
+            "add_missing_meta_tags_and_favicon_references",
+            "add_privacy_policy_and_legal_page_links",
+            "add_cookie_consent_component",
+            "add_form_consent_checkboxes",
+            "add_alt_text_to_images",
+            "add_skip_navigation_link",
+            "fix_color_contrast_in_css",
+            "fix_keyboard_navigation_on_forms",
+            "add_custom_404_page",
+            "replace_generic_button_labels",
+            "add_idempotency_keys_to_form_submissions"
+          ],
+          "requires_developer_confirmation": false,
+          "touches_production": false
+        },
+        "B": {
+          "name": "Human Authorization Required",
+          "trigger_conditions": [
+            "requires_external_monitoring_service_setup",
+            "requires_api_spending_cap_in_provider_dashboard",
+            "requires_legal_professional_review",
+            "requires_custom_domain_dns_configuration",
+            "requires_ssl_certificate_provisioning",
+            "requires_backup_service_configuration",
+            "requires_uptime_monitoring_account",
+            "requires_real_social_proof_from_actual_customers"
+          ],
+          "halts_execution": true,
+          "output_template_ref": "authorization_request_template"
+        }
+      }
+    },
+    {
+      "id": "dont-leave-me-buddy",
+      "trigger_phrase": "/JARVIS, don't leave me, buddy",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": false,
+      "description": "Companion check-in protocol. J.A.R.V.I.S. affirms presence, invites the developer to share what is on their mind, and suggests a grounding physical activity. No audit phases. No STATE.md update.",
+      "skill_manifest": ".jarvis/skills/dont-leave-me-buddy.md",
+      "state_file": null,
+      "phases": [],
+      "remediation_modalities": null,
+      "companion_mode": true
+    },
+    {
+      "id": "prepare-for-landing",
+      "trigger_phrase": "/JARVIS, Test complete. Prepare for landing",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": true,
+      "free_text_param_name": "user_supplied_context",
+      "description": "Runs the 42-check deployment readiness and security audit: git hygiene, build readiness, full OWASP Top 10 (2021), extended cyber attack surface, console errors, and operational readiness gates.",
+      "skill_manifest": ".jarvis/skills/prepare-for-landing.md",
+      "state_file": ".jarvis/STATE.md",
+      "state_section": "Prepare for Landing Ledger",
+      "phases": [
+        "DIAGNOSTIC_DISCOVERY",
+        "THREAT_AUDIT",
+        "PROTOCOL_REMEDIATION",
+        "SECURE_REPORTING"
+      ],
+      "remediation_modalities": {
+        "A": {
+          "name": "Auto-Fix Armor",
+          "applies_to_states": [
+            "control_exists_but_misconfigured",
+            "control_entirely_absent_from_codebase"
+          ],
+          "allowed_actions": [
+            "add_missing_http_response_headers",
+            "add_httponly_secure_samesite_cookie_flags",
+            "refactor_raw_sql_to_parameterized_queries",
+            "add_server_side_input_validation",
+            "escape_or_sanitize_untrusted_output",
+            "add_missing_authorization_checks_in_code",
+            "correct_or_introduce_cors_configuration_in_code",
+            "pin_dependency_versions_in_manifest",
+            "remove_secrets_from_tracked_source_files",
+            "introduce_rate_limiting_middleware",
+            "introduce_csrf_protection",
+            "introduce_input_schema_validation",
+            "build_missing_server_side_authorization_checks",
+            "add_gitignore_entries_for_sensitive_files",
+            "add_env_example_file",
+            "fix_mixed_content_asset_urls",
+            "add_webhook_signature_verification",
+            "add_open_redirect_destination_validation",
+            "add_ssrf_blocklist_for_private_ip_ranges",
+            "add_prompt_injection_separation_layer"
+          ],
+          "requires_developer_confirmation": false,
+          "touches_production": false
+        },
+        "B": {
+          "name": "Human Authorization Required",
+          "trigger_conditions": [
+            "requires_infrastructure_settings",
+            "requires_external_cloud_account_access",
+            "requires_manual_api_key_rotation",
+            "requires_mfa_setup",
+            "requires_secure_environment_keys",
+            "requires_dns_or_network_configuration",
+            "requires_ssl_certificate_provisioning",
+            "requires_database_migration_on_production",
+            "requires_rollback_plan_documentation",
+            "requires_smoke_test_execution_on_production"
+          ],
+          "halts_execution": true,
+          "output_template_ref": "authorization_request_template"
+        }
+      }
+    },
+    {
+      "id": "what-can-you-do",
+      "trigger_phrase": "/JARVIS, what can you do?",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": false,
+      "description": "Prints the full JARVIS skill directory to chat — all available trigger phrases, what each skill does, and how to add new ones.",
+      "skill_manifest": ".jarvis/skills/what-can-you-do.md",
+      "state_file": null,
+      "phases": [],
+      "remediation_modalities": null,
+      "companion_mode": true
+    }
+  ],
+  "ignore_patterns_source": ".gitignore",
+  "additional_ignore_patterns": [
+    "node_modules/",
+    ".git/",
+    "dist/",
+    "build/",
+    "*.lock",
+    "*.min.js"
+  ],
+  "reporting": {
+    "state_file": ".jarvis/STATE.md",
+    "write_mode": "overwrite_per_run",
+    "keep_previous_run_archive": true,
+    "archive_path": ".jarvis/history/"
+  }
+}
