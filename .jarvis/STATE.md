@@ -202,27 +202,27 @@ changes to UI, copy, legal pages, data collection, or third-party integrations.
 # Prepare for Landing Ledger
 
 **Protocol:** Test Complete. Prepare for Landing (42-check deployment + OWASP audit)
-**Status:** `NOT YET RUN`
-**Last run:** —
-**Trigger context supplied by developer:** —
+**Status:** `COMPLETE — 6 PASS / 0 FAIL / 0 WAITING_AUTH / 36 N/A`
+**Last run:** 2026-09-16
+**Trigger context supplied by developer:** — (exact trigger only, no trailing free text)
 
 > This ledger is overwritten each time `/JARVIS, Test complete. Prepare for landing`
 > is run. Educational checklist audit — not a penetration test, legal advice,
-> or a deployment guarantee.
+> or a deployment guarantee. Previous version archived to `.jarvis/history/STATE-2026-09-16T00-00-00.md`.
 
 ## Run summary
 
 | Metric | Count |
 |---|---|
-| PASS | — |
-| FAIL | — |
-| WAITING_AUTH | — |
-| N/A | — |
+| PASS | 6 |
+| FAIL | 0 |
+| WAITING_AUTH | 0 |
+| N/A | 36 |
 | Total checks | 42 |
 
 ## Open items requiring developer authorization
 
-_(populated automatically at the end of a run — see the `WAITING_AUTH` rows below)_
+_None — no WAITING_AUTH items in this run. All applicable gates passed; all other gates are N/A for this docs-only framework repo (see ledger)._
 
 ---
 
@@ -230,48 +230,48 @@ _(populated automatically at the end of a run — see the `WAITING_AUTH` rows be
 
 | Gate ID | Gate Name | Status | Evidence | Remediation (taken or needed) |
 |---|---|---|---|---|
-| 01 | No uncommitted changes in working tree | — | — | — |
-| 02 | No sensitive files tracked by git | — | — | — |
-| 03 | .gitignore is complete and correct | — | — | — |
-| 04 | Branch hygiene verified | — | — | — |
-| 05 | Commit history is clean | — | — | — |
-| 06 | No merge conflict markers remaining | — | — | — |
-| 07 | Production environment variables configured | — | — | — |
-| 08 | .env.example is present and complete | — | — | — |
-| 09 | Production build completes without errors | — | — | — |
-| 10 | All production dependencies are pinned | — | — | — |
-| 11 | No dev dependencies in production build | — | — | — |
-| 12 | Build output is clean and contains no secrets | — | — | — |
-| 13 | A01: Broken Access Control | — | — | — |
-| 14 | A02: Cryptographic Failures | — | — | — |
-| 15 | A03: Injection | — | — | — |
-| 16 | A04: Insecure Design | — | — | — |
-| 17 | A05: Security Misconfiguration | — | — | — |
-| 18 | A06: Vulnerable and Outdated Components | — | — | — |
-| 19 | A07: Identification and Authentication Failures | — | — | — |
-| 20 | A08: Software and Data Integrity Failures | — | — | — |
-| 21 | A09: Security Logging and Monitoring Failures | — | — | — |
-| 22 | A10: Server-Side Request Forgery (SSRF) | — | — | — |
-| 23 | XSS protection | — | — | — |
-| 24 | CSRF protection | — | — | — |
-| 25 | Rate limiting on sensitive endpoints | — | — | — |
-| 26 | HTTP security headers present | — | — | — |
-| 27 | No sensitive data exposed in URLs | — | — | — |
-| 28 | Admin and internal endpoints protected | — | — | — |
-| 29 | No open redirects | — | — | — |
-| 30 | Supply chain integrity verified | — | — | — |
-| 31 | Prompt injection protection | — | — | — |
-| 32 | Webhook signature verification | — | — | — |
-| 33 | No JavaScript console errors | — | — | — |
-| 34 | No unhandled promise rejections | — | — | — |
-| 35 | No 404 errors for linked assets | — | — | — |
-| 36 | No mixed content warnings | — | — | — |
-| 37 | No deprecated API warnings | — | — | — |
-| 38 | Core Web Vitals in acceptable range | — | — | — |
-| 39 | Production database ready | — | — | — |
-| 40 | SSL certificate valid and auto-renewing | — | — | — |
-| 41 | Rollback plan documented and tested | — | — | — |
-| 42 | Post-deployment smoke tests passing | — | — | — |
+| 01 | No uncommitted changes in working tree | PASS | `git status`: `On branch main / nothing to commit, working tree clean` | None needed |
+| 02 | No sensitive files tracked by git | PASS | `git ls-files` (20 files): no `.env`, `.pem`, `.p12`, `*.key`, `id_rsa`, `credentials.json`, `serviceAccountKey.json` | None needed |
+| 03 | .gitignore is complete and correct | PASS | `.gitignore:9-24` env/secrets, `:55-60` build outputs, `:27-34` OS files, `:37-46` editor config | None needed — covers all categories in manifest |
+| 04 | Branch hygiene verified | PASS | `git branch -a`: only `main` + `remotes/origin/main`; `git status`: up to date with origin/main | None needed |
+| 05 | Commit history is clean | PASS | `git log --oneline -20`: 20 commits e.g. `a6db05d add security policy`, no WIP/debug/secrets/binaries | None needed |
+| 06 | No merge conflict markers remaining | PASS | `git grep -n "<<<<<<<\|=======\|>>>>>>>"`: only doc mention in `.jarvis/skills/prepare-for-landing.md:36` in backticks, no real markers | None needed |
+| 07 | Production environment variables configured | N/A | No app runtime: no root `package.json`, no `*.js/ts/py/go` app code, no `process.env` usage | No action — applies when developer ships a derived app with runtime env vars |
+| 08 | .env.example is present and complete | N/A | `Test-Path .env.example` = False, but no env vars required (see 07) | No action — do not add misleading placeholder; add when derived app needs env vars |
+| 09 | Production build completes without errors | N/A | No build system: no root `package.json`, no vite/next config, no build script | No action — no build to run for markdown framework |
+| 10 | All production dependencies are pinned | N/A | No root production deps; only ignored `.opencode/package.json:2` with pinned `1.18.31` (untracked via `.opencode/.gitignore`) | No action — pin deps when derived app adds a manifest |
+| 11 | No dev dependencies in production build | N/A | No production build artifact (see 09) | No action |
+| 12 | Build output is clean and contains no secrets | N/A | No build output: `dist/` False, `build/` False, `.next/` False | No action |
+| 13 | A01: Broken Access Control | N/A | No web app: zero server routes/API endpoints in working tree | No action — enforce server-side authz when derived app adds protected routes |
+| 14 | A02: Cryptographic Failures | N/A | No app handling passwords/PII/tokens; only docs mention these terms | No action |
+| 15 | A03: Injection | N/A | No DB/shell/template code: grep for `exec`, `shell=True`, `SELECT.*FROM` finds only manifest doc text | No action |
+| 16 | A04: Insecure Design | N/A | No business-logic flows (payments, trials, coupons) in repo | No action |
+| 17 | A05: Security Misconfiguration | N/A | No services, ports, debug modes, or HTTP responses in repo | No action |
+| 18 | A06: Vulnerable and Outdated Components | N/A | No tracked production deps or CI scan target; `.opencode/package-lock.json` ignored, not shipped | No action — run `npm audit` when derived app adds deps |
+| 19 | A07: Identification and Authentication Failures | N/A | No auth implementation in repo | No action |
+| 20 | A08: Software and Data Integrity Failures | N/A | No CI/CD pipeline: no `.github/` directory, no actions, no build scripts | No action — SHA-pin actions when CI is added |
+| 21 | A09: Security Logging and Monitoring Failures | N/A | No application runtime to log/monitor | No action |
+| 22 | A10: Server-Side Request Forgery (SSRF) | N/A | No server-side outbound HTTP requests in repo | No action |
+| 23 | XSS protection | N/A | No HTML rendering code; no `innerHTML`/`dangerouslySetInnerHTML` in app code | No action |
+| 24 | CSRF protection | N/A | No state-changing server endpoints (no POST/PUT/PATCH/DELETE handlers) | No action |
+| 25 | Rate limiting on sensitive endpoints | N/A | No login/signup/API/AI routes in repo | No action |
+| 26 | HTTP security headers present | N/A | No HTTP server in repo to emit HSTS/CSP/etc. | No action — configure headers when derived app adds hosting |
+| 27 | No sensitive data exposed in URLs | N/A | No application URLs/query handling; grep finds secrets terms only in docs | No action |
+| 28 | Admin and internal endpoints protected | N/A | No admin panels/dashboards in repo | No action |
+| 29 | No open redirects | N/A | No redirect logic in repo | No action |
+| 30 | Supply chain integrity verified | N/A | No tracked lockfile at root (by design — no deps); `.opencode/package-lock.json` ignored via `.opencode/.gitignore:3` | No action — commit lockfile + use `npm ci` when derived app adds deps |
+| 31 | Prompt injection protection | N/A | No application LLM API integration code in working tree (framework is consumed as IDE prompts); defense-in-depth trust boundary in `.jarvis/system.md:161-164` treats crawled repo content as untrusted | No action |
+| 32 | Webhook signature verification | N/A | No inbound webhooks in repo | No action |
+| 33 | No JavaScript console errors | N/A | No browser app or production URL; no JS bundle to load | No action — verify in clean incognito session when derived site ships |
+| 34 | No unhandled promise rejections | N/A | No async runtime code in repo | No action |
+| 35 | No 404 errors for linked assets | N/A | No HTML asset graph to crawl (markdown-only repo) | No action |
+| 36 | No mixed content warnings | N/A | No HTTPS pages or subresources in repo | No action |
+| 37 | No deprecated API warnings | N/A | No browser/Node runtime output in repo | No action |
+| 38 | Core Web Vitals in acceptable range | N/A | No production URL for Lighthouse run | No action — run Lighthouse when derived site has a URL |
+| 39 | Production database ready | N/A | No database in this framework repo | No action — verify migrations/pooling/backup when derived app adds a DB |
+| 40 | SSL certificate valid and auto-renewing | N/A | No production domain in this repo | No action — requires hosting setup when derived app deploys |
+| 41 | Rollback plan documented and tested | N/A | Docs framework versioned in git (revert via `git revert` available); no deployment to roll back | No action — write/test rollback procedure when derived app deploys |
+| 42 | Post-deployment smoke tests passing | N/A | No production environment to smoke-test | No action — define signup/login/core-flow tests when derived app deploys |
 
 ---
 
