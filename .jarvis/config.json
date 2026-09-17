@@ -213,6 +213,49 @@
       }
     },
     {
+      "id": "live-fire-protocol",
+      "trigger_phrase": "/JARVIS, Live Fire Protocol",
+      "match_type": "exact_substring",
+      "case_sensitive": true,
+      "allow_trailing_free_text": true,
+      "free_text_param_name": "user_supplied_context",
+      "description": "Orchestrates headless OWASP ZAP to run dynamic attack simulations against active local/sandbox endpoints, correlates findings to source code routes, applies Auto-Fix Armor, and verifies fixes.",
+      "skill_manifest": ".jarvis/skills/live-fire-protocol.md",
+      "state_file": ".jarvis/STATE.md",
+      "state_section": "Live Fire Protocol Ledger",
+      "phases": [
+        "PRE_FLIGHT_SAFETY",
+        "DYNAMIC_INFILTRATION",
+        "THREAT_AUDIT",
+        "PROTOCOL_REMEDIATION",
+        "VERIFICATION_SCAN",
+        "SECURE_REPORTING"
+      ],
+      "remediation_modalities": {
+        "A": {
+          "name": "Auto-Fix Armor",
+          "allowed_actions": [
+            "parameterize_dynamic_queries",
+            "sanitize_and_encode_outputs",
+            "inject_csrf_tokens",
+            "set_secure_cookie_attributes",
+            "enforce_strict_cors_origins",
+            "inject_security_headers",
+            "mask_verbose_error_messages"
+          ]
+        },
+        "B": {
+          "name": "Human Authorization Required",
+          "trigger_conditions": [
+            "non_localhost_external_target",
+            "destructive_db_state_alteration",
+            "production_flag_detected"
+          ],
+          "halts_execution": true
+        }
+      }
+    },
+    {
       "id": "what-can-you-do",
       "trigger_phrase": "/JARVIS, what can you do?",
       "match_type": "exact_substring",

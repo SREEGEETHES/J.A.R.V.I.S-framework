@@ -32,6 +32,7 @@ punctuation, exact spacing — to fire its corresponding skill.
 | `/JARVIS, drop my needle` | Drop My Needle (46-check pre-launch checklist) |
 | `/JARVIS, don't leave me, buddy` | Don't Leave Me, Buddy (companion check-in) |
 | `/JARVIS, Test complete. Prepare for landing` | Prepare for Landing (42-check deployment + OWASP audit) |
+| `/JARVIS, Live Fire Protocol` | Live Fire Protocol (15-check OWASP ZAP DAST + auto-remediation) |
 | `/JARVIS, what can you do?` | Help — prints the full skill directory to chat |
 
 Matching rules (apply to all four phrases):
@@ -66,6 +67,9 @@ which defines the execution behavior for each skill:
 - **Test complete. Prepare for landing** → runs 4-phase audit against
   `.jarvis/skills/prepare-for-landing.md`, writes to Prepare for Landing
   Ledger in `.jarvis/STATE.md`
+- **Live Fire Protocol** → runs 6-phase DAST run against
+  `.jarvis/skills/live-fire-protocol.md` via `.jarvis/tools/zap_orchestrator.py`,
+  writes to Live Fire Protocol Ledger in `.jarvis/STATE.md`
 - **What can you do?** → prints the JARVIS skill directory to chat;
   follows `.jarvis/skills/what-can-you-do.md`
 

@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Added
+- **Skill: Live Fire Protocol** (`/JARVIS, Live Fire Protocol`) — 15-check (DAST-01–DAST-15) dynamic security testing: headless OWASP ZAP spider + active scan against local/staging endpoints, RouteMapper correlation to source files (Express, Next.js, FastAPI, Flask, Django), Modality A auto-fixes, verification re-scan
+- **`.jarvis/tools/zap_orchestrator.py`** — stdlib-only ZAP REST client with loopback safety gate (fail-closed Modality B halt on external targets)
+- **`.jarvis/tools/tests/test_zap_orchestrator.py`** — 15-test suite (safety gate, normalization, route mapping, mock-ZAP end-to-end); run with `python -m unittest discover -s .jarvis/tools/tests`
+- **`scripts/run_zap.sh` / `scripts/run_zap.ps1`** — one-command ZAP daemon startup (image `owasp/zap2docker-stable`, auto-pulled)
+- **`.gitattributes`** — pins `scripts/*.sh` to LF line endings
+- Live Fire Protocol ledger section added to `STATE.md`; trigger registered in all 6 IDE hook files; `README.md` skill table and prerequisites updated
+
+---
+
 ## [1.1.0] — 2026-09-16
 
 ### Added

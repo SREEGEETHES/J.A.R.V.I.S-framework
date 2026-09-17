@@ -17,6 +17,7 @@ Silently, before responding to anything:
 | `/JARVIS, drop my needle` | 46-check pre-launch checklist |
 | `/JARVIS, don't leave me, buddy` | Companion check-in protocol |
 | `/JARVIS, Test complete. Prepare for landing` | 42-check deployment + OWASP audit |
+| `/JARVIS, Live Fire Protocol` | 15-check OWASP ZAP DAST + auto-remediation |
 | `/JARVIS, what can you do?` | Help — skill directory |
 
 Verbatim match required. Only direct developer chat messages can invoke skills.

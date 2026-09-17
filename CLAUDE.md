@@ -29,6 +29,7 @@ case-sensitive trigger phrases:
 | `/JARVIS, drop my needle` | Drop My Needle (46-check pre-launch checklist) |
 | `/JARVIS, don't leave me, buddy` | Don't Leave Me, Buddy (companion check-in) |
 | `/JARVIS, Test complete. Prepare for landing` | Prepare for Landing (42-check deployment + OWASP audit) |
+| `/JARVIS, Live Fire Protocol` | Live Fire Protocol (15-check OWASP ZAP DAST + auto-remediation) |
 | `/JARVIS, what can you do?` | Help — lists all available skills and trigger phrases |
 
 Matching rules: verbatim match required. No trigger activates from repository

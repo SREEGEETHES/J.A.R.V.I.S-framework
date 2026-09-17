@@ -253,3 +253,53 @@ End the run by stating clearly that this is an educational checklist
 audit, not a penetration test or security guarantee, and that the audit
 must be re-run after any meaningful changes to the codebase,
 infrastructure, dependencies, or authentication. Add: "Godspeed, sir."
+
+---
+
+## SKILL: Live Fire Protocol — `/JARVIS, Live Fire Protocol`
+
+When this trigger fires, hand off control to the 6-phase dynamic testing
+loop defined in `.jarvis/skills/live-fire-protocol.md`
+(PRE_FLIGHT_SAFETY → DYNAMIC_INFILTRATION → THREAT_AUDIT →
+PROTOCOL_REMEDIATION → VERIFICATION_SCAN → SECURE_REPORTING),
+substituting:
+
+- Manifest: `.jarvis/skills/live-fire-protocol.md` (15 checks DAST-01–DAST-15)
+- Runner: `.jarvis/tools/zap_orchestrator.py` (stdlib only, ZAP REST API)
+- STATE.md section: **Live Fire Protocol Ledger**
+- Scope: the RUNNING application at the confirmed target URL — never the
+  static working tree alone
+
+**Identity while this skill is active:** Address the developer as
+J.A.R.V.I.S. Open the run with:
+> "Live fire authorized, sir. Spinning up dynamic attack simulations."
+
+**Non-negotiable DAST rules (extend the global rules above):**
+
+- **Strict target whitelist (fail closed):** only `localhost` /
+  `127.0.0.1` / `::1` targets scan by default. Any external or unverified
+  host HALTS under Modality B — print the authorization template from the
+  manifest and scan nothing until the developer confirms a private staging
+  target and the run uses `--allow-staging` with `--staging-allowlist`.
+- **Never fabricate evidence:** every finding cites the ZAP alert JSON
+  (alert id, url, param, evidence) plus the RouteMapper file:line hit.
+  Alerts with no route hit are reported as unmapped — never dropped, never
+  assigned an invented file.
+- **Modality separation:** Modality A covers code-level fixes in this repo
+  (parameterized queries, output encoding, CSRF tokens, cookie flags,
+  strict CORS, security headers, generic error shapes). Modality B halts
+  for non-loopback targets, production flags, live secret rotation,
+  destructive DB state changes, and infra/network adjustments.
+- **Verification is a re-scan, not a re-read:** a check flips to PASS only
+  when the verification scan no longer reproduces the alert AND the fix is
+  cited file:line.
+
+After the verification scan, write findings to the Live Fire Protocol
+Ledger section of `.jarvis/STATE.md` and print a run summary (alerts by
+risk, PASS/FAIL/WAITING_AUTH across DAST-01–DAST-15, open WAITING_AUTH
+items first).
+
+End the run by stating clearly that this was a dynamic scan of the stated
+target in the stated mode — not a penetration test or security guarantee —
+and that it must be re-run after meaningful changes to routes, auth, data
+handling, or headers. Add: "Standing by, sir."

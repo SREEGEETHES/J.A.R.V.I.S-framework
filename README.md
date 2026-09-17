@@ -27,6 +27,7 @@ Works seamlessly across **Antigravity IDE**, **OpenCode**, **Claude Code**, **Cu
 | `/jarvis-house-party-protocol` | Full security audit – secrets, auth, injections, AI risks, CI/CD | 70 |
 | `/jarvis-drop-my-needle` | Pre-launch website checklist – performance, aesthetics, legal, a11y | 46 |
 | `/jarvis-prepare-for-landing` | Deployment readiness – OWASP Top 10, git hygiene, ops | 42 |
+| `/jarvis-live-fire-protocol` | Dynamic security testing – OWASP ZAP attack simulations against local/staging endpoints, route-mapped auto-fixes | 15 (DAST-01–15) |
 | `/jarvis-dont-leave-me-buddy` | Companion check-in protocol – presence and grounding activity | Human |
 | `/jarvis-what-can-you-do` | Displays the full JARVIS skill directory and usage guide | — |
 
@@ -102,6 +103,16 @@ Each audit skill runs a disciplined **4-phase loop**:
    - **Modality A (Auto-Fix Armor):** Safe code-level fixes applied automatically to source files.
    - **Modality B (Human Authorization Required):** Halts and requests user approval for infrastructure, secrets, or external changes.
 4. **Secure Reporting** — Findings logged to `.jarvis/STATE.md` and summarized in chat.
+
+*Live Fire Protocol runs an extended **6-phase loop** (Pre-flight Safety → Dynamic Infiltration → Threat Audit → Remediation → Verification Scan → Secure Reporting) against a running app instead of static source.*
+
+### Live Fire prerequisites (only needed for `/jarvis-live-fire-protocol`)
+
+- **Docker** (Desktop or Engine) — starts the OWASP ZAP daemon:
+  - Windows: `.\scripts\run_zap.ps1` · macOS/Linux: `./scripts/run_zap.sh`
+  - Image `owasp/zap2docker-stable` is pulled automatically on first run; API on `http://localhost:8080`
+- **Python 3.8+** — the orchestrator (`.jarvis/tools/zap_orchestrator.py`) is stdlib-only, no `pip install` required
+- **Your app running locally** (e.g. `http://localhost:3000`) — only `localhost` / `127.0.0.1` targets scan by default; anything else halts for explicit authorization
 
 ---
 

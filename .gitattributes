@@ -1,0 +1,4 @@
+# J.A.R.V.I.S. framework — line-ending and executable policy.
+# Shell helpers must keep LF endings or `#!/usr/bin/env bash` breaks on Linux/macOS.
+scripts/*.sh text eol=lf
+*.ps1 text eol=crlf

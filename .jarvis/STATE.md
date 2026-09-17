@@ -279,3 +279,67 @@ _None — no WAITING_AUTH items in this run. All applicable gates passed; all ot
 Re-run after any meaningful changes to the codebase, infrastructure,
 dependencies, or authentication. Godspeed, sir.
 
+---
+
+---
+
+## Live Fire Protocol Ledger (Dynamic Security Audits)
+
+**Protocol:** Live Fire Protocol (15-check OWASP ZAP DAST + automated remediation)
+**Status:** `NOT YET RUN`
+**Last run:** —
+**Trigger context supplied by developer:** —
+**Target URL:** —
+**Scan mode:** — (`baseline` | `active`)
+**ZAP version:** —
+
+> This ledger is overwritten each time `/JARVIS, Live Fire Protocol` is
+> run. Previous version archived to `.jarvis/history/` first (per
+> `reporting.keep_previous_run_archive`). Educational dynamic scan — not a
+> penetration test, legal advice, or a security guarantee. Every row must be
+> grounded in ZAP alert JSON plus a repository route hit; unmapped alerts are
+> listed, never dropped or invented.
+
+## Run summary
+
+| Metric | Count |
+|---|---|
+| PASS | — |
+| FAIL | — |
+| WAITING_AUTH | — |
+| UNKNOWN | — |
+| Total checks | 15 |
+
+## Open items requiring developer authorization
+
+_(populated automatically at the end of a run — see the `WAITING_AUTH`
+rows below)_
+
+---
+
+## Full ledger
+
+| Check ID | Attack Vector | Risk | Target URL / Param | Source File:Line | Status | Verification & Remediation |
+|---|---|---|---|---|---|---|
+| DAST-01 | Injection Flaws (SQLi, NoSQLi, Command Injection) | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-02 | Cross-Site Scripting (Reflected & Stored XSS) | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-03 | Broken Access Control & Forced Browsing | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-04 | Missing Anti-CSRF Guardrails | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-05 | Insecure HTTP Headers (HSTS, CSP, X-Content-Type-Options) | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-06 | Sensitive Data Exposure via URL / Verbose Errors | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-07 | Insecure Cookie Flags (`HttpOnly`, `Secure`, `SameSite`) | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-08 | Open Redirection Vulnerabilities | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-09 | Insecure Direct Object References (IDOR) | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-10 | Server-Side Request Forgery (SSRF) | HIGH | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-11 | CORS Misconfiguration (Overly permissive origins) | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-12 | Cache-Control & Information Leakage | LOW | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-13 | Content Security Policy Missing or Bypassable | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-14 | Unhandled Server Exceptions & Stack Trace Leaks | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+| DAST-15 | Rate Limiting & Denial-of-Service Defense | MEDIUM | N/A | N/A | UNKNOWN | Awaiting dynamic run |
+
+---
+
+**Launch standard:** a check passes only when the ZAP alert no longer
+reproduces on verification re-scan AND the fix is cited file:line. Re-run
+after meaningful changes to routes, auth, data handling, or headers.
+
